@@ -4,10 +4,11 @@ import os
 from dotenv import load_dotenv
 
 import sys
-from database.db import init_db, save_history, get_history, create_user, login_user, get_user, update_photo
+import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
+from database.db import init_db, save_history, get_history, create_user, login_user, get_user, update_photo
 # ================= SESSION =================
 
 if "user" not in st.session_state:
