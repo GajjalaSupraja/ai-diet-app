@@ -178,7 +178,7 @@ if menu == "Generate Diet":
         with st.spinner("Generating AI Diet..."):
 
             response = requests.post(
-                "http://127.0.0.1:8000/generate-diet",
+                "https://ai-diet-backend.onrender.com/generate-diet",
                 json={
                     "age": age,
                     "gender": gender,
