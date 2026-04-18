@@ -2,3 +2,5 @@ streamlit
 requests
 python-dotenv
 bcrypt
+fastapi
+uvicorn
