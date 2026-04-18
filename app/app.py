@@ -192,20 +192,27 @@ if menu == "Generate Diet":
                 }
             )
 
+            draft = ""
+            final = ""
+
             try:
                 if response.status_code == 200:
                     data = response.json()
                     draft = data["data"]["draft"]
                     final = data["data"]["final"]
+
+                    st.session_state["llm1"] = draft
+                    st.session_state["llm2"] = final
+
+                    save_history(st.session_state.user, age, goal, diet, final)
+
                 else:
-                    st.error("Server error")
+                    st.error(f"Server error: {response.status_code}")
+
             except Exception as e:
                 st.error(f"Error: {e}")
 
-            st.session_state["llm1"] = draft
-            st.session_state["llm2"] = final
-
-            save_history(st.session_state.user, age, goal, diet, final)
+                save_history(st.session_state.user, age, goal, diet, final)
 
     if "llm2" in st.session_state:
 
