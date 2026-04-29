@@ -1,5 +1,3 @@
-from typing_extensions import final
-
 from fastapi import FastAPI
 from pydantic import BaseModel
 from services.diet_ai import generate_diet, verify_diet
@@ -10,6 +8,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI()
+
+@app.get("/")
+def home():
+    return {"message": "AI Diet App Backend Running Successfully"}
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
@@ -52,9 +54,9 @@ Return 7 days.
     grocery = generate_grocery(final, GROQ_API_KEY)
 
     return {
-    "status": "success",
-    "data": {
-        "draft": draft,
-        "final": final
+        "status": "success",
+        "data": {
+            "draft": draft,
+            "final": final
+        }
     }
-}
