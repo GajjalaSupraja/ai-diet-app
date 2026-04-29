@@ -191,8 +191,6 @@ if menu == "Generate Diet":
                     "health": health
                 }
             )
-            st.write("Status Code:", response.status_code)
-            st.write("Response:", response.text)
             draft = ""
             final = ""
 
