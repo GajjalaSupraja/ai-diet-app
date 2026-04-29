@@ -14,7 +14,7 @@ def home():
     return {"message": "AI Diet App Backend Running Successfully"}
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
 
 
 class DietRequest(BaseModel):
@@ -49,8 +49,7 @@ Return 7 days.
 """
 
     draft = generate_diet(prompt, GROQ_API_KEY)
-    final = verify_diet(draft, OPENROUTER_API_KEY)
-
+    final = verify_diet(draft, GROQ_API_KEY)
     grocery = generate_grocery(final, GROQ_API_KEY)
 
     return {
