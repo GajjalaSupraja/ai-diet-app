@@ -178,7 +178,7 @@ if menu == "Generate Diet":
         with st.spinner("Generating AI Diet..."):
 
             response = requests.post(
-                "https://ai-diet-backend.onrender.com/generate-diet",
+                "https://ai-diet-app-8.onrender.com/generate-diet",
                 json={
                     "age": age,
                     "gender": gender,
